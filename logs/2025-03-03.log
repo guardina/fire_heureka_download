@@ -1,0 +1,12 @@
+[2025-03-03 13:31:26] [INFO] This is a message info
+[2025-03-03 13:31:26] [ERROR] This is an error
+[2025-03-03 13:31:27] [INFO] Executed update: INSERT INTO actor(name, age) VALUES (?, ?)
+[2025-03-03 13:31:27] [INFO] Successful insert in database!
+[2025-03-03 15:40:55] [INFO] File created: test.txt
+[2025-03-03 15:45:45] [INFO] Successfully created the folder /home/debian/Desktop/json_fire5_parser/fire_heureka_api/fire_heureka_api/test/
+[2025-03-03 15:53:54] [INFO] Successfully created the folder test/
+[2025-03-03 15:54:14] [INFO] File created: test.txt
+[2025-03-03 16:12:02] [INFO] Executed query: SELECT uc.username AS praxis_name, ut.user_id, ut.access_token FROM user_credentials uc JOIN user_tokens ut ON uc.id = ut.user_id;
+[2025-03-03 16:36:50] [INFO] Executed query: SELECT uc.username AS praxis_name, ut.user_id, ut.access_token FROM user_credentials uc JOIN user_tokens ut ON uc.id = ut.user_id;
+[2025-03-03 16:36:59] [INFO] Executed query: SELECT uc.username AS praxis_name, ut.user_id, ut.access_token FROM user_credentials uc JOIN user_tokens ut ON uc.id = ut.user_id;
+[2025-03-03 16:56:16] [INFO] Executed query: SELECT uc.username AS praxis_name, ut.user_id, ut.access_token FROM user_credentials uc JOIN user_tokens ut ON uc.id = ut.user_id;
