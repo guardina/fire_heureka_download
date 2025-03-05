@@ -1,7 +1,13 @@
 package com.example;
 
-import java.io.File;
-
 public class HeurekaClient {
+
+    public HeurekaClient() {
+        this.configureHeureka();
+    }
     
+
+    private void configureHeureka() {
+
+    }
 }
