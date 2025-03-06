@@ -12,9 +12,8 @@ public class FileManager {
     }
 
 
-    /* 
-     * Creates the specified file in the specified directory
-    */
+    // Creates the specified file in the specified directory
+    
     public boolean createFile(String directoryPath, String fileName) {
         File directory = new File(directoryPath);
         if (!directory.exists()) {

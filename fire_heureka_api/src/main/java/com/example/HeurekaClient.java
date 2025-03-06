@@ -8,6 +8,26 @@ public class HeurekaClient {
     
 
     private void configureHeureka() {
+        
+    }
+
+    public void getPatients() {
+
+    }
+
+
+
+    public void getConditions() {
+
+    }
+
+
+    public void getObservations() {
+
+    }
+
+
+    public void getMedications() {
 
     }
 }

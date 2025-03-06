@@ -19,6 +19,7 @@ public class Logger {
         }
     }
 
+
     private void log(String message, String level) {
         String filename = logDir + "/" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ".log";
         String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
@@ -32,6 +33,7 @@ public class Logger {
     }
 
 
+    
     public void info(String message) {
         log(message, "INFO");
     }

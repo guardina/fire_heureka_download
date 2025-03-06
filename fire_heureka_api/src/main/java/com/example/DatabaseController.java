@@ -6,12 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+
 
 public class DatabaseController {
     private String url;
@@ -33,7 +34,7 @@ public class DatabaseController {
 
 
 
-    public List<Map<String, String>> executeQuery(String query, Object... params) {
+    public List<Map<String, String>> executeSelectQuery(String query, Object... params) {
         List<Map<String, String>> results = new ArrayList<>();
         try (Connection conn = connect();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -58,7 +59,7 @@ public class DatabaseController {
                 }
                 results.add(rowMap);
             }
-            logger.info("Executed query: " + query);
+            logger.info("Executed SELECT query: " + query);
         } catch (SQLException e) {
             logger.error("Database query failed: " + e.getMessage());
         }
@@ -66,22 +67,9 @@ public class DatabaseController {
     }
 
 
-    
-    private void setParameters(PreparedStatement stmt, Object... params) throws SQLException {
-        for (int i = 0; i < params.length; i++) {
-            stmt.setObject(i + 1, params[i]);
-        }
-    }
 
-
-
-    public String getToken(String userId, String tokenType) {
-        String query = "";
-        if (tokenType.equals("access")) {
-            query = "SELECT access_token FROM user_tokens WHERE user_id = ?";
-        } else if (tokenType.equals("refresh")) {
-            query = "SELECT refresh_token FROM user_tokens WHERE user_id = ?";
-        }
+    public String getEntry(String userId, String tableName, String columnName) {
+        String query = "SELECT " + columnName + " FROM " + tableName + " WHERE user_id = ?";
         
         if (!query.equals("")) {
             try (Connection conn = connect();
@@ -94,13 +82,13 @@ public class DatabaseController {
 
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    String token = rs.getString(tokenType + "_token");
-                    logger.info("Retrieved access token for user: " + userId);
+                    String token = rs.getString(columnName);
+                    logger.info("Retrieved " + columnName + " for user: " + userId);
                     return token;
                 }
             }
         } catch (SQLException e) {
-            logger.error("Failed to retrieve access token from database: " + e.getMessage());
+            logger.error("Failed to retrieve " + columnName + " from database: " + e.getMessage());
         }
         }
         
@@ -126,6 +114,15 @@ public class DatabaseController {
             logger.info("Successfully updated token!");
         } catch (SQLException e) {
             logger.error("Failed to update token in database: " + e.getMessage());
+        }
+    }
+
+
+
+
+    private void setParameters(PreparedStatement stmt, Object... params) throws SQLException {
+        for (int i = 0; i < params.length; i++) {
+            stmt.setObject(i + 1, params[i]);
         }
     }
 }
